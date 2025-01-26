@@ -8,13 +8,12 @@ class Player:
 
     def turn_counterclockwise(self, degrees):
         self.current_angle = (self.current_angle + degrees) % 360
-        print(self.current_angle)
 
     def go_forward(self, units, game_map):
-        delta_x = units * cos(radians(self.current_angle))
+        delta_x = units * -cos(radians(self.current_angle))
         delta_y = units * sin(radians(self.current_angle))
 
-        new_x = self.x + delta_x # optimization so I dont calculate it 8 times
+        new_x = self.x + delta_x # optimization so I dont have to calculate it 8 times
         new_y = self.y + delta_y 
 
         if (0 <= new_y < len(game_map)) and (0 <= new_x< len(game_map[0])): # if new point is in the bounderies
