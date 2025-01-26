@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 1920, 1080
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 movement_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(movement_timer, 25) # Trigger movement every 100 milliseconds
+pygame.time.set_timer(movement_timer, 25) # Trigger movement every 25 milliseconds
 rotation_degree = 0
 move_speed = 0
 game_loop = True
