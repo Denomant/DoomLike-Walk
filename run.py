@@ -28,9 +28,10 @@ def apply_key(key, reverse=False):
         case pygame.K_RIGHT:
             rotation_degree -= 4 * factor
         case pygame.K_UP:
-            move_speed -= 0.05 * factor
-        case pygame.K_DOWN:
             move_speed += 0.05 * factor
+        case pygame.K_DOWN:
+            move_speed -= 0.05 * factor
+
 
 while game_loop:
     for event in pygame.event.get():

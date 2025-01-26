@@ -10,8 +10,8 @@ class Player:
         self.current_angle = (self.current_angle + degrees) % 360
 
     def go_forward(self, units, game_map):
-        delta_x = units * -cos(radians(self.current_angle))
-        delta_y = units * sin(radians(self.current_angle))
+        delta_x = units * cos(radians(self.current_angle))
+        delta_y = units * -sin(radians(self.current_angle))
 
         new_x = self.x + delta_x # optimization so I dont have to calculate it 8 times
         new_y = self.y + delta_y 
