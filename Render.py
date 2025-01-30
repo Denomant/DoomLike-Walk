@@ -52,7 +52,7 @@ def draw_bloc(screen, shadow, *points):
 
 def render(screen, game_map, player: Player):
     screen_sizes = screen.get_size()
-    view_distance = 3
+    view_distance = 5
     FOV = 120 # Field of view, how far to sides the player can see in degrees
     ray_angle_diffrence = 1
     last_ray_angle = (player.current_angle + (0.5 * FOV))
