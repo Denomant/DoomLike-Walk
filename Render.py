@@ -61,7 +61,7 @@ def render(screen, game_map, player: Player):
     
     total_draw_blocs = ceil((last_ray_angle - current_ray_angle) / ray_angle_diffrence)
     bloc_width = (screen_sizes[0] / total_draw_blocs)
-    current_bloc_x = 0
+    current_bloc_x = screen_sizes[0]  # Start from the right edge
 
     while current_ray_angle <= last_ray_angle:
         ray = Ray(player.get_pos(), current_ray_angle % 360)
@@ -73,4 +73,4 @@ def render(screen, game_map, player: Player):
         draw_bloc(screen, ray.shadow, *points)
 
         current_ray_angle += ray_angle_diffrence
-        current_bloc_x += bloc_width
+        current_bloc_x -= bloc_width  # Move left instead of right

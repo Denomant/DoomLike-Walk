@@ -30,9 +30,9 @@ def apply_key(key, reverse=False):
     factor = -1 if reverse else +1
     match event.key:
         case pygame.K_LEFT:
-            rotation_degree -= 2 * factor
-        case pygame.K_RIGHT:
             rotation_degree += 2 * factor
+        case pygame.K_RIGHT:
+            rotation_degree -= 2 * factor
         case pygame.K_UP:
             move_speed += 0.035 * factor
         case pygame.K_DOWN:
