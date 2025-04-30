@@ -57,7 +57,6 @@ while game_loop:
                 pygame.quit()
                 exit()
 
-
         if event.type ==  pygame.KEYDOWN:
             apply_key(event.key)
 
@@ -72,7 +71,6 @@ while game_loop:
     render(screen, game_map, player)
     
     # Draw exit "X" button
-    #pygame.draw.rect(screen, "White", exit_rect, width=2)
     pygame.draw.line(screen, "White", exit_rect.topleft, exit_rect.bottomright, 2)
     pygame.draw.line(screen, "White", exit_rect.topright, exit_rect.bottomleft, 2)
 
