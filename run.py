@@ -3,8 +3,11 @@ from sys import exit
 from Player import Player
 from Render import render
 
+pygame.init()
+INFO = pygame.display.Info()
+
 # Changeable
-WIDTH, HEIGHT = 1920, 1080
+WIDTH, HEIGHT = INFO.current_w, INFO.current_h
 Max_FPS = 60
 player = Player((5.5, 1.5), 0)
 game_map = [["#", "#", "#", "#", "#", "#", "#", "#"],
@@ -24,6 +27,9 @@ pygame.time.set_timer(movement_timer, 15) # Trigger movement every 25 millisecon
 rotation_degree = 0
 move_speed = 0
 game_loop = True
+
+# Exit button
+exit_rect = pygame.Rect(WIDTH - 50, 10, 40, 40)
 
 def apply_key(key, reverse=False):
     global move_speed, rotation_degree
@@ -45,6 +51,13 @@ while game_loop:
             pygame.quit()
             exit()
         
+        # exit button handeling
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if exit_rect.collidepoint(event.pos):
+                pygame.quit()
+                exit()
+
+
         if event.type ==  pygame.KEYDOWN:
             apply_key(event.key)
 
@@ -58,5 +71,10 @@ while game_loop:
     screen.fill("Black") # clear previous frame
     render(screen, game_map, player)
     
+    # Draw exit "X" button
+    #pygame.draw.rect(screen, "White", exit_rect, width=2)
+    pygame.draw.line(screen, "White", exit_rect.topleft, exit_rect.bottomright, 2)
+    pygame.draw.line(screen, "White", exit_rect.topright, exit_rect.bottomleft, 2)
+
     FPS_clock.tick(Max_FPS)
     pygame.display.update()
