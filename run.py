@@ -23,7 +23,7 @@ game_map = [["#", "#", "#", "#", "#", "#", "#", "#"],
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 FPS_clock = pygame.time.Clock()
 movement_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(movement_timer, 15) # Trigger movement every 25 milliseconds
+pygame.time.set_timer(movement_timer, 15) # Trigger movement every 15 milliseconds
 rotation_degree = 0
 move_speed = 0
 game_loop = True
@@ -35,13 +35,13 @@ def apply_key(key, reverse=False):
     global move_speed, rotation_degree
     factor = -1 if reverse else +1
     match event.key:
-        case pygame.K_LEFT:
+        case pygame.K_LEFT | pygame.K_a :
             rotation_degree += 2 * factor
-        case pygame.K_RIGHT:
+        case pygame.K_RIGHT | pygame.K_d:
             rotation_degree -= 2 * factor
-        case pygame.K_UP:
+        case pygame.K_UP | pygame.K_w:
             move_speed += 0.035 * factor
-        case pygame.K_DOWN:
+        case pygame.K_DOWN | pygame.K_s:
             move_speed -= 0.035 * factor
 
 
@@ -58,6 +58,11 @@ while game_loop:
                 exit()
 
         if event.type ==  pygame.KEYDOWN:
+            # End the game if escape is pressed
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                exit()
+
             apply_key(event.key)
 
         if event.type == pygame.KEYUP:
