@@ -12,6 +12,8 @@ inspired by classic Doom-style movement and rendering.
 This project demonstrates real-time pseudo-3D rendering of a 2D environment, fully 
 built from scratch, without relying on 3D libraries.
 
+<img src=./demo.gif>
+
 ## How To Run
 1. Ensure you have Python 3 and git installed.
 2. Navigate to the project directory in your terminal.  
@@ -21,10 +23,11 @@ built from scratch, without relying on 3D libraries.
    ```
 4. <b>Optionally create / activate a virtual environment:</b>
    ```bash
-   python3 -m venv venv
+   # Use python3 on Linux / MacOS
+   python -m venv venv
    ```
    ```bash
-   # On Linux
+   # Linux / MacOS
    source venv/bin/activate
    
    # On Windows
@@ -58,10 +61,10 @@ The project is split into several clean, self-contained modules:
 | File | Responsibility |
 |------|----------------|
 | `run.py` | Game loop, variable tracking, event handling, map customization. |
-| `Render.py` | Ray casting logic, wall shading, and drawing. |
-| `Player.py` | Player movement, rotation, and collision detection. |
+| `render.py` | Ray casting logic, wall shading, and drawing. |
+| `player.py` | Player movement, rotation, and collision detection. |
 
-### <em>2. Ray Casting Logic (`Render.py`)</em>
+### <em>2. Ray Casting Logic (`render.py`)</em>
 - <b><em>Ray Creation</b></em>  
 For each vertical 'slice' of the screen, a separate `Ray` object is cast with its
 corresponding angle and starting point in mind.
@@ -77,7 +80,7 @@ Ray length</sub>) × wall expected height at projection screen distance
 <sub>view distance</sub>
     - shade = 255 - <sup>(Ray length × 255)</sup>/<sub>view distance</sub>
 
-### <em>3. Player System (`Player.py`)</em>
+### <em>3. Player System (`player.py`)</em>
 - Each `Player` object stores its own position (as a floating-point (y, x) tuple to 
 simulate array indexation) and its current viewing angle (in degrees).
 - Rotation is handled by the `turn_counterclockwise` method, which adds or 

@@ -1,7 +1,7 @@
 import pygame
 from sys import exit
-from Player import Player
-from Render import render
+from player import Player
+from render import render
 
 pygame.init()
 INFO = pygame.display.Info()

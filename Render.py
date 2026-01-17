@@ -1,5 +1,5 @@
 import pygame
-from Player import Player, is_valid_point, move_point_in_angle
+from player import Player, is_valid_point, move_point_in_angle
 from math import ceil
 
 
